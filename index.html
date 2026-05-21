@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Bouzghiba | Industrial Engineering & Maintenance Portfolio</title>
+    <meta name="description"
+        content="Professional portfolio of Mohammed Bouzghib, an Industrial Engineering Student and Maintenance Tech specializing in optimizing industrial systems, predictive maintenance, and IoT & AI.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="scroll-progress" class="scroll-progress-bar"></div>
+    <div class="ambient-glow">
+        <div class="glow-blob glow-amber"></div>
+        <div class="glow-blob glow-cyan"></div>
+        <div class="glow-blob glow-violet"></div>
+    </div>
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+    <!-- Header Navigation -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <!-- Flat 2D Gear & Wrench Logo SVG -->
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="3"></circle>
+                    <path
+                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z">
+                    </path>
+                </svg>
+                <span>M.BOUZGHIBA</span>
+            </a>
+
+            <nav>
+                <ul class="nav-menu" id="nav-links-menu">
+                    <li><a href="#hero" class="nav-link active"><span class="lang-en">Home</span><span
+                                class="lang-fr">Accueil</span></a></li>
+                    <li><a href="#about" class="nav-link"><span class="lang-en">About</span><span
+                                class="lang-fr">&Agrave; Propos</span></a></li>
+                    <li><a href="#skills" class="nav-link"><span class="lang-en">Skills</span><span
+                                class="lang-fr">Comp&eacute;tences</span></a></li>
+                    <li><a href="#projects" class="nav-link"><span class="lang-en">Projects</span><span
+                                class="lang-fr">Projets</span></a></li>
+                    <li><a href="#education" class="nav-link"><span class="lang-en">Education</span><span
+                                class="lang-fr">Formation</span></a></li>
+                    <li><a href="#achievements" class="nav-link"><span class="lang-en">Achievements</span><span
+                                class="lang-fr">R&eacute;alisations</span></a></li>
+                    <li><a href="#contact" class="nav-link"><span class="lang-en">Contact</span><span
+                                class="lang-fr">Contact</span></a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button id="lang-toggle" class="lang-toggle" aria-label="Toggle Language / Basculer la langue">
+                    <span class="lang-en">FR</span>
+                    <span class="lang-fr">EN</span>
+                </button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme">
+                    <svg viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Sun rays/moon path defined in JS -->
+                        <path
+                            d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z M2 12h2 M20 12h2 M12 2v2 M12 20v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12 M20 12 M4.93 19.07l1.41-1.41 M17.66 6.34l1.41-1.41">
+                        </path>
+                    </svg>
+                </button>
+                <button id="hamburger-btn" class="hamburger" aria-label="Toggle Navigation Menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-meta">
+                    <span class="system-status">
+                        <span class="status-dot"></span>
+                        <span class="lang-en">SYS.ACTIVE // S1-S2.COMPLETE</span>
+                        <span class="lang-fr">SYS.ACTIF // S1-S2.VALID&Eacute;</span>
+                    </span>
+                </div>
+                <h2 class="hero-greeting">
+                    <span class="lang-en">Hi, I'm Mohammed Bouzghib</span>
+                    <span class="lang-fr">Bonjour, je suis Mohammed Bouzghib</span>
+                </h2>
+                <h1 class="hero-title">
+                    <span class="lang-en">Engineering &amp;<br>Maintenance</span>
+                    <span class="lang-fr">Ing&eacute;nierie &amp;<br>Maintenance</span>
+                </h1>
+                <div class="hero-roles">
+                    <span id="typewriter-text"></span><span class="typed-cursor">|</span>
+                </div>
+                <p class="hero-desc">
+                    <span class="lang-en">Industrial systems optimizer passionate about predictive maintenance, system
+                        reliability, and integrating IoT and smart AI technologies into traditional mechanical and
+                        electrical engineering frameworks.</span>
+                    <span class="lang-fr">Optimisateur de syst&grave;mes industriels passionn&eacute; par la maintenance
+                        pr&eacute;dictive, la fiabilit&eacute; des syst&egrave;mes et l'int&eacute;gration des
+                        technologies IoT et d'IA intelligente dans les cadres d'ing&eacute;nierie m&eacute;canique et
+                        &eacute;lectrique traditionnels.</span>
+                </p>
+                <div class="hero-ctas">
+                    <a href="#projects" class="btn btn-primary">
+                        <span class="lang-en">View Technical Projects</span>
+                        <span class="lang-fr">Voir les Projets Techniques</span>
+                    </a>
+                    <a href="https://drive.google.com/file/d/1oLBYnUTsOwG3-eSNKm-E706wRj67Lvgo" target="_blank"
+                        rel="noopener noreferrer" class="btn btn-secondary">
+                        <span class="lang-en">Download CV</span>
+                        <span class="lang-fr">T&eacute;l&eacute;charger le CV</span>
+                    </a>
+                </div>
+                <div class="hero-socials">
+                    <a href="https://www.linkedin.com/in/mohammed-bouzghiba" target="_blank" rel="noopener noreferrer"
+                        class="social-link" title="LinkedIn">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link"
+                        title="GitHub">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z" />
+                        </svg>
+                    </a>
+                    <a href="mailto:mohammedbouzghiba@gmail.com" class="social-link" title="Email">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Custom 2D Blueprint Schematic Graphic (strictly non-3D) -->
+            <div class="hero-graphic">
+                <svg class="schematic-svg" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <radialGradient id="radar-sweep-glow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="var(--cyan-accent)" stop-opacity="0.6" />
+                            <stop offset="100%" stop-color="var(--cyan-accent)" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+
+                    <!-- Radar Sweep Group -->
+                    <g class="radar-sweep-group">
+                        <line x1="200" y1="200" x2="200" y2="60" stroke="var(--cyan-accent)" stroke-width="1.5"
+                            opacity="0.8"></line>
+                        <path d="M 200 200 L 200 60 A 140 140 0 0 1 270 79 Z" fill="url(#radar-sweep-glow)"
+                            opacity="0.25"></path>
+                    </g>
+
+                    <!-- Main Axis Grid Lines -->
+                    <line x1="200" y1="0" x2="200" y2="400" stroke="currentColor" stroke-width="0.5"
+                        stroke-dasharray="5 5" opacity="0.3"></line>
+                    <line x1="0" y1="200" x2="400" y2="200" stroke="currentColor" stroke-width="0.5"
+                        stroke-dasharray="5 5" opacity="0.3"></line>
+
+                    <!-- Concentric Circles representing mechanical rotation / gear axes -->
+                    <circle cx="200" cy="200" r="140" stroke="currentColor" stroke-width="0.5" stroke-dasharray="2 4"
+                        opacity="0.5"></circle>
+
+                    <!-- Rotating Gear Group -->
+                    <g class="rotating-gear">
+                        <circle cx="200" cy="200" r="100" stroke="currentColor" stroke-width="1" stroke-dasharray="5 5"
+                            opacity="0.6" class="pulse-element"></circle>
+                        <circle cx="200" cy="200" r="60" stroke="currentColor" stroke-width="1.5" opacity="0.8"
+                            class="animate-draw"></circle>
+                        <circle cx="200" cy="200" r="10" stroke="var(--accent)" stroke-width="2"
+                            fill="var(--bg-primary)"></circle>
+
+                        <!-- Schematic 2D Mechanical Cog Teeth -->
+                        <path class="animate-draw"
+                            d="M 200 135 L 200 125 M 200 265 L 200 275 M 135 200 L 125 200 M 265 200 L 275 200 M 154 154 L 147 147 M 246 246 L 253 253 M 154 246 L 147 253 M 246 154 L 253 147"
+                            stroke="currentColor" stroke-width="2" opacity="0.8"></path>
+                    </g>
+
+                    <!-- Secondary Rotating Gear (Interlocking, opposite rotation) -->
+                    <g class="rotating-gear-reverse">
+                        <circle cx="290" cy="200" r="50" stroke="currentColor" stroke-width="0.5" stroke-dasharray="3 3"
+                            opacity="0.4"></circle>
+                        <circle cx="290" cy="200" r="30" stroke="currentColor" stroke-width="1.5" opacity="0.7"
+                            class="animate-draw"></circle>
+                        <circle cx="290" cy="200" r="6" stroke="var(--accent)" stroke-width="1.5"
+                            fill="var(--bg-primary)"></circle>
+                        <!-- Secondary Gear Teeth -->
+                        <path class="animate-draw"
+                            d="M 290 165 L 290 157 M 290 235 L 290 243 M 255 200 L 247 200 M 325 200 L 333 200 M 265 175 L 259 169 M 315 225 L 321 231 M 265 225 L 259 231 M 315 175 L 321 169"
+                            stroke="currentColor" stroke-width="1.5" opacity="0.7"></path>
+                    </g>
+
+                    <!-- Digital Signal Waveform / Telemetry Representation (strictly 2D flat) -->
+                    <path class="animate-draw schematic-waveform-accent"
+                        d="M 50 250 L 100 250 L 115 170 L 130 310 L 145 230 L 160 250 L 200 250" stroke="var(--accent)"
+                        stroke-width="1.5" stroke-linecap="round" opacity="0.9"></path>
+                    <path class="animate-draw schematic-waveform-cyan"
+                        d="M 200 150 L 240 150 L 255 90 L 270 210 L 285 130 L 300 150 L 350 150"
+                        stroke="var(--cyan-accent)" stroke-width="1.5" stroke-linecap="round" opacity="0.9"></path>
+
+                    <!-- Flow Sensor / Logic Gate Schematic blocks -->
+                    <rect class="animate-draw" x="40" y="80" width="60" height="30" rx="3" stroke="currentColor"
+                        stroke-width="1" fill="var(--bg-secondary)"></rect>
+                    <text x="70" y="98" fill="currentColor" font-family="var(--font-mono)" font-size="8"
+                        text-anchor="middle">SENS.01</text>
+                    <line x1="100" y1="95" x2="150" y2="95" stroke="currentColor" stroke-width="1"
+                        stroke-dasharray="2 2"></line>
+                    <circle class="schematic-led blinking-orange" cx="150" cy="95" r="3"></circle>
+
+                    <rect class="animate-draw" x="300" y="300" width="60" height="30" rx="3" stroke="currentColor"
+                        stroke-width="1" fill="var(--bg-secondary)"></rect>
+                    <text x="330" y="318" fill="currentColor" font-family="var(--font-mono)" font-size="8"
+                        text-anchor="middle">CTRL.02</text>
+                    <line x1="250" y1="315" x2="300" y2="315" stroke="currentColor" stroke-width="1"
+                        stroke-dasharray="2 2"></line>
+                    <circle class="schematic-led blinking-cyan" cx="250" cy="315" r="3"></circle>
+
+                    <!-- Status Display Panel Overlay -->
+                    <g class="status-overlay-panel" opacity="0.85">
+                        <rect x="290" y="30" width="90" height="42" rx="4" stroke="currentColor" stroke-width="0.75"
+                            fill="var(--bg-secondary)"></rect>
+                        <circle class="schematic-led blinking-green" cx="305" cy="42" r="3"></circle>
+                        <text x="315" y="45" fill="currentColor" font-family="var(--font-mono)"
+                            font-size="7">SEN.ACTIVE</text>
+                        <circle class="schematic-led blinking-orange" cx="305" cy="56" r="3"></circle>
+                        <text x="315" y="59" fill="currentColor" font-family="var(--font-mono)"
+                            font-size="7">LINK.OK</text>
+                    </g>
+
+                    <!-- Engineering dimension lines & labels -->
+                    <line x1="45" y1="370" x2="355" y2="370" stroke="currentColor" stroke-width="0.5" opacity="0.4">
+                    </line>
+                    <path d="M 45 365 L 45 375 M 355 365 L 355 375" stroke="currentColor" stroke-width="0.5"
+                        opacity="0.4"></path>
+                    <text x="200" y="365" fill="var(--text-muted)" font-family="var(--font-mono)" font-size="9"
+                        text-anchor="middle">&Oslash; 310.00 mm</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">
+                    <span class="lang-en">About Me</span>
+                    <span class="lang-fr">&Agrave; Propos de Moi</span>
+                </h2>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-photo-wrapper">
+                    <div class="about-photo-inner">
+                        <img src="profile.jpg" alt="Mohammed Bouzghib" class="about-photo">
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <p class="about-summary">
+                        <span class="lang-en">Currently a student in the <strong>G&eacute;nie Industriel et Maintenance
+                                (GIM)</strong> program within the <strong>G&eacute;nie M&eacute;canique Productique et
+                                Maintenance Industrielle</strong> department at the <strong>&Eacute;cole
+                                Sup&eacute;rieure de Technologie de F&egrave;s (ESTF)</strong>. Focused on building
+                            polyvalent expertise to maintain, optimize, and secure industrial equipment and
+                            installations.</span>
+                        <span class="lang-fr">Actuellement &eacute;tudiant en <strong>G&eacute;nie Industriel et
+                                Maintenance (GIM)</strong> au sein du d&eacute;partement <strong>G&eacute;nie
+                                M&eacute;canique Productique et Maintenance Industrielle</strong> &agrave;
+                            l'<strong>&Eacute;cole Sup&eacute;rieure de Technologie de F&egrave;s (ESTF)</strong>.
+                            Concentr&eacute; sur le d&eacute;veloppement d'une expertise polyvalente pour maintenir,
+                            optimiser et s&eacute;curiser les &eacute;quipements et installations industriels.</span>
+                    </p>
+
+                    <div class="about-bullets">
+                        <div class="about-bullet-card">
+                            <!-- Bullet Icon: Book SVG -->
+                            <svg class="bullet-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            </svg>
+                            <div class="bullet-text">
+                                <h4>
+                                    <span class="lang-en">Current Academic Status</span>
+                                    <span class="lang-fr">Statut Acad&eacute;mique Actuel</span>
+                                </h4>
+                                <p>
+                                    <span class="lang-en">Successfully completed Semester 1 and Semester 2 (S1-S2)
+                                        academic foundations in GIM with top scores in mechanical, electrical, and
+                                        thermal modules.</span>
+                                    <span class="lang-fr">Validation avec succ&egrave;s des fondations
+                                        acad&eacute;miques du Semestre 1 et du Semestre 2 (S1-S2) en GIM avec
+                                        d'excellents r&eacute;sultats dans les modules m&eacute;caniques,
+                                        &eacute;lectriques et thermiques.</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="about-bullet-card">
+                            <!-- Bullet Icon: Shield/Check SVG -->
+                            <svg class="bullet-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                            <div class="bullet-text">
+                                <h4>
+                                    <span class="lang-en">Core Objective</span>
+                                    <span class="lang-fr">Objectif Principal</span>
+                                </h4>
+                                <p>
+                                    <span class="lang-en">Comprehensive training to guarantee maximum availability,
+                                        reliability, maintainability, and safety (FMD/RAMS principles) of complex,
+                                        interconnected industrial systems.</span>
+                                    <span class="lang-fr">Formation compl&egrave;te pour garantir la
+                                        disponibilit&eacute; maximale, la fiabilit&eacute;, la maintenabilit&eacute; et
+                                        la s&eacute;curit&eacute; (principes FMD/RAMS) de syst&egrave;mes industriels
+                                        complexes et interconnect&eacute;s.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">
+                    <span class="lang-en">Skills &amp; Syllabus</span>
+                    <span class="lang-fr">Comp&eacute;tences &amp; Programme</span>
+                </h2>
+            </div>
+
+            <div class="skills-grid">
+
+                <!-- Category 1: Thermal & Fluid Sciences -->
+                <div class="skills-category">
+                    <div class="card-glow-bar"></div>
+                    <div class="category-header">
+                        <svg class="category-icon" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                        <h3 class="category-title">
+                            <span class="lang-en">Thermal &amp; Fluid Sciences</span>
+                            <span class="lang-fr">Sciences Thermiques &amp; Fluides</span>
+                        </h3>
+                    </div>
+                    <div class="skills-items">
+                        <div class="skill-item" data-level="80">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2v10M18.66 7.34l-7.07 7.07M22 12H12M18.66 16.66l-7.07-7.07M12 22V12M5.34 16.66l7.07-7.07M2 12h10M5.34 7.34l7.07 7.07" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Special Physics &amp; Energetics</span>
+                                    <span class="lang-fr">Physique Sp&eacute;ciale &amp;
+                                        &Eacute;nerg&eacute;tique</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+                                <path d="M12 6v6l4 2" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Thermodynamics &amp; Air Conditioning Systems</span>
+                                    <span class="lang-fr">Thermodynamique &amp; Syst&egrave;mes de Climatisation</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Electrical & Control Systems -->
+                <div class="skills-category">
+                    <div class="card-glow-bar"></div>
+                    <div class="category-header">
+                        <svg class="category-icon" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg>
+                        <h3 class="category-title">
+                            <span class="lang-en">Electrical &amp; Control Systems</span>
+                            <span class="lang-fr">Syst&egrave;mes &Eacute;lectriques &amp; de R&eacute;gulation</span>
+                        </h3>
+                    </div>
+                    <div class="skills-items">
+                        <div class="skill-item" data-level="85">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 2v20M2 12h20" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Electrical Technology</span>
+                                    <span class="lang-fr">Technologie &Eacute;lectrique</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="90">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path
+                                    d="M19 5h-1.5a2.5 2.5 0 0 0-2.5 2.5v9a2.5 2.5 0 0 1-2.5 2.5H10a2.5 2.5 0 0 1-2.5-2.5v-9A2.5 2.5 0 0 0 5 5H3" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Electrical Wiring (Schematics &amp; Cabinets)</span>
+                                    <span class="lang-fr">C&acirc;blage &Eacute;lectrique (Sch&eacute;mas &amp;
+                                        Armoires)</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 6v6l3 3" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Electrotechnics (Motor Controls / Direct Starting)</span>
+                                    <span class="lang-fr">&Eacute;lectrotechnique (Commande Moteurs / D&eacute;marrage
+                                        Direct)</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Mechanical Engineering -->
+                <div class="skills-category">
+                    <div class="card-glow-bar"></div>
+                    <div class="category-header">
+                        <svg class="category-icon" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                        </svg>
+                        <h3 class="category-title">
+                            <span class="lang-en">Mechanical Engineering</span>
+                            <span class="lang-fr">G&eacute;nie M&eacute;canique</span>
+                        </h3>
+                    </div>
+                    <div class="skills-items">
+                        <div class="skill-item" data-level="80">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 3v18M3 12h18" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Mechanical Technology</span>
+                                    <span class="lang-fr">Technologie M&eacute;canique</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="75">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path
+                                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Mechanical Construction / Design</span>
+                                    <span class="lang-fr">Construction M&eacute;canique</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 4: Maintenance & Management -->
+                <div class="skills-category">
+                    <div class="card-glow-bar"></div>
+                    <div class="category-header">
+                        <svg class="category-icon" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M20 7h-9M14 17H5M20 12H4" />
+                        </svg>
+                        <h3 class="category-title">
+                            <span class="lang-en">Maintenance &amp; Management</span>
+                            <span class="lang-fr">Maintenance &amp; Management</span>
+                        </h3>
+                    </div>
+                    <div class="skills-items">
+                        <div class="skill-item" data-level="85">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <rect x="3" y="4" width="18" height="18" rx="2" />
+                                <path d="M9 9h6M9 13h6M9 17h4" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Maintenance Methodologies &amp; Principles</span>
+                                    <span class="lang-fr">M&eacute;thodologies &amp; Concepts de Maintenance</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="75">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path d="M12 20h9M3 20h4M7 4h10M5 12h14" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Gestion de Projets (Project Management)</span>
+                                    <span class="lang-fr">Gestion de Projets</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="80">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <rect x="2" y="2" width="20" height="8" rx="2" />
+                                <rect x="2" y="14" width="20" height="8" rx="2" />
+                                <line x1="6" y1="6" x2="6.01" y2="6" />
+                                <line x1="6" y1="18" x2="6.01" y2="18" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">GMAO / CMMS (Computerized Maintenance)</span>
+                                    <span class="lang-fr">GMAO / CMMS (Gestion de Maintenance Assist&eacute;e par
+                                        Ordinateur)</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 5: Scientific & Digital Foundations -->
+                <div class="skills-category">
+                    <div class="card-glow-bar"></div>
+                    <div class="category-header">
+                        <svg class="category-icon" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M4 7V4h16v3M9 20h6M12 4v16" />
+                        </svg>
+                        <h3 class="category-title">
+                            <span class="lang-en">Scientific &amp; Digital Foundations</span>
+                            <span class="lang-fr">Bases Scientifiques &amp; Num&eacute;riques</span>
+                        </h3>
+                    </div>
+                    <div class="skills-items">
+                        <div class="skill-item" data-level="82">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path
+                                    d="M9 15c.67 0 1.25-.33 1.56-.85l2.44-4.15 2.44 4.15c.3.52.89.85 1.56.85h3M3 15h3l2.44-4.15" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Applied Mathematics (S1 &amp; S2)</span>
+                                    <span class="lang-fr">Math&eacute;matiques Appliqu&eacute;es (S1 &amp; S2)</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <polyline points="4 17 10 11 14 15 20 9" />
+                                <polygon points="20 14 20 9 15 9" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Culture Digitale (Digital Skills)</span>
+                                    <span class="lang-fr">Culture Digitale</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="90">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">LaTeX (Academic &amp; Technical Reporting)</span>
+                                    <span class="lang-fr">LaTeX (Rapports Acad&eacute;miques &amp; Techniques)</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 6: Professional Communication -->
+                <div class="skills-category">
+                    <div class="card-glow-bar"></div>
+                    <div class="category-header">
+                        <svg class="category-icon" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                        </svg>
+                        <h3 class="category-title">
+                            <span class="lang-en">Professional Communication</span>
+                            <span class="lang-fr">Communication Professionnelle</span>
+                        </h3>
+                    </div>
+                    <div class="skills-items">
+                        <div class="skill-item" data-level="85">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Technical English &amp; French (S1 &amp; S2)</span>
+                                    <span class="lang-fr">Anglais &amp; Fran&ccedil;ais Technique (S1 &amp; S2)</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="80">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path d="M22 10v6M2 10v6M12 4v16" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">University Work Methodology</span>
+                                    <span class="lang-fr">M&eacute;thodologie de Travail Universitaire</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 7: Programming & IT -->
+                <div class="skills-category skills-category--highlight">
+                    <div class="card-glow-bar"></div>
+                    <div class="category-header">
+                        <svg class="category-icon" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg>
+                        <h3 class="category-title">
+                            <span class="lang-en">Programming &amp; IT</span>
+                            <span class="lang-fr">Programmation &amp; Informatique</span>
+                        </h3>
+                    </div>
+                    <div class="skills-items">
+                        <div class="skill-item" data-level="80">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M9 9h1v6H9zM14 9h1v6h-1z" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Linux / Windows Administration</span>
+                                    <span class="lang-fr">Administration Linux / Windows</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="85">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                                <line x1="16" y1="13" x2="8" y2="13" />
+                                <line x1="16" y1="17" x2="8" y2="17" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Office Tools (Word, Excel)</span>
+                                    <span class="lang-fr">Outils Bureautique (Word, Excel)</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="88">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">Python / C Programming</span>
+                                    <span class="lang-fr">Programmation Python / C</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-level="90">
+                            <svg class="skill-icon-flat" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="3" />
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                            </svg>
+                            <div class="skill-details">
+                                <span class="skill-name">
+                                    <span class="lang-en">IoT: ESP32, MQTT, Arduino</span>
+                                    <span class="lang-fr">IoT : ESP32, MQTT, Arduino</span>
+                                </span>
+                                <div class="skill-progress-bg">
+                                    <div class="skill-progress-fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">
+                    <span class="lang-en">Projects &amp; Lab Work</span>
+                    <span class="lang-fr">Projets &amp; Travaux Pratiques</span>
+                </h2>
+            </div>
+
+            <div class="projects-grid">
+
+                <!-- Project 1: Air Conditioning Study Bench -->
+                <div class="project-card">
+                    <div class="project-card-sweep"></div>
+                    <div class="project-graphic-placeholder">
+                        <img src="project_hvac_bench.jpg" alt="Air Conditioning Study Bench"
+                            class="project-graphic-img">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">
+                                <span class="lang-en">Energetics</span>
+                                <span class="lang-fr">&Eacute;nerg&eacute;tique</span>
+                            </span>
+                            <span class="project-tag">
+                                <span class="lang-en">HVAC Systems</span>
+                                <span class="lang-fr">Syst&egrave;mes CVC</span>
+                            </span>
+                            <span class="project-tag">
+                                <span class="lang-en">Fluid Mechanics</span>
+                                <span class="lang-fr">M&eacute;canique des Fluides</span>
+                            </span>
+                        </div>
+                        <h3 class="project-title">
+                            <span class="lang-en">Air Conditioning Study Bench</span>
+                            <span class="lang-fr">Banc d'&Eacute;tude du Conditionnement d'Air</span>
+                        </h3>
+                        <p class="project-desc">
+                            <span class="lang-en">Thermodynamic and applied heat transfer analysis of refrigeration
+                                cycles on a pilot HVAC bench. Developed enthalpy diagrams and quantified cooling cycle
+                                coefficient of performance (COP) across varied loads.</span>
+                            <span class="lang-fr">Analyse thermodynamique et transfert thermique appliqu&eacute; des
+                                cycles de r&eacute;frig&eacute;ration sur un banc CVC pilote. D&eacute;veloppement de
+                                diagrammes d'enthalpie et quantification du coefficient de performance (COP) sous
+                                diverses charges.</span>
+                        </p>
+                        <a href="https://drive.google.com/file/d/18M-etxtGX4C44w--NGz1ngSqqPLwGUc7/view?usp=drive_link"
+                            target="_blank" rel="noopener noreferrer" class="project-btn">
+                            <span>
+                                <span class="lang-en">VIEW REPORT</span>
+                                <span class="lang-fr">VOIR LE RAPPORT</span>
+                            </span>
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3: Electrotechnics Lab: Demarrage Direct -->
+                <div class="project-card">
+                    <div class="project-card-sweep"></div>
+                    <div class="project-graphic-placeholder">
+                        <img src="project_motor_starter.jpg" alt="Electrotechnics Lab: Direct Starting"
+                            class="project-graphic-img">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">
+                                <span class="lang-en">Electrotechnics</span>
+                                <span class="lang-fr">&Eacute;lectrotechnique</span>
+                            </span>
+                            <span class="project-tag">
+                                <span class="lang-en">Motor Control</span>
+                                <span class="lang-fr">Commande Moteur</span>
+                            </span>
+                            <span class="project-tag">
+                                <span class="lang-en">Industrial Wiring</span>
+                                <span class="lang-fr">C&acirc;blage Industriel</span>
+                            </span>
+                        </div>
+                        <h3 class="project-title">
+                            <span class="lang-en">Electrotechnics Lab: Direct Starting</span>
+                            <span class="lang-fr">TP &Eacute;lectrotechnique : D&eacute;marrage Direct</span>
+                        </h3>
+                        <p class="project-desc">
+                            <span class="lang-en">Designed and wired control and power schematics for direct-on-line
+                                (DOL) starting of three-phase asynchronous motors. Integrated safety locks, push
+                                buttons, and thermal overload protections.</span>
+                            <span class="lang-fr">Conception et c&acirc;blage de sch&eacute;mas de commande et de
+                                puissance pour le d&eacute;marrage direct de moteurs asynchrones triphas&eacute;s.
+                                Int&eacute;gration de verrouillages de s&eacute;curit&eacute;, boutons-poussoirs et
+                                relais thermiques de protection.</span>
+                        </p>
+                        <a href="https://drive.google.com/drive/folders/1Ebc8W1sMxFC8g880UwZAkUDkTqa3GU45?usp=drive_link"
+                            target="_blank" rel="noopener noreferrer" class="project-btn">
+                            <span>
+                                <span class="lang-en">VIEW REPORT</span>
+                                <span class="lang-fr">VOIR LE RAPPORT</span>
+                            </span>
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4: GMAO / CMMS Implementation -->
+                <div class="project-card">
+                    <div class="project-card-sweep"></div>
+                    <div class="project-graphic-placeholder">
+                        <img src="project_cmms_dashboard.jpg" alt="CMMS Mock Implementation"
+                            class="project-graphic-img">
+                    </div>
+                    <div class="project-body">
+                        <div class="project-tags">
+                            <span class="project-tag">
+                                <span class="lang-en">Maintenance Mgmt</span>
+                                <span class="lang-fr">Gestion de Maintenance</span>
+                            </span>
+                            <span class="project-tag">
+                                <span class="lang-en">CMMS / GMAO</span>
+                                <span class="lang-fr">GMAO / CMMS</span>
+                            </span>
+                            <span class="project-tag">
+                                <span class="lang-en">Reliability</span>
+                                <span class="lang-fr">Fiabilit&eacute;</span>
+                            </span>
+                        </div>
+                        <h3 class="project-title">
+                            <span class="lang-en">CMMS Mock Implementation</span>
+                            <span class="lang-fr">Simulation d'Impl&eacute;mentation GMAO</span>
+                        </h3>
+                        <p class="project-desc">
+                            <span class="lang-en">Deployment simulations of Computerized Maintenance Management Systems
+                                (CMMS). Structured databases for industrial asset trees, established preventative
+                                maintenance scheduling, and logged work orders.</span>
+                            <span class="lang-fr">Simulations de d&eacute;ploiement de Syst&egrave;mes de Gestion de
+                                Maintenance Assist&eacute;e par Ordinateur (GMAO). Structuration des bases de
+                                donn&eacute;es d'arborescence des &eacute;quipements, planification pr&eacute;ventive et
+                                bons de travail.</span>
+                        </p>
+                        <button class="project-btn">
+                            <span>
+                                <span class="lang-en">VIEW REPORT</span>
+                                <span class="lang-fr">VOIR LE RAPPORT</span>
+                            </span>
+                            <svg viewBox="0 0 24 24">
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline Section -->
+    <section id="education">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">
+                    <span class="lang-en">Education &amp; Credentials</span>
+                    <span class="lang-fr">Formation &amp; Dipl&ocirc;mes</span>
+                </h2>
+            </div>
+
+            <div class="timeline">
+
+                <!-- Timeline Node 1: ESTF Program -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-node">
+                        <div class="timeline-meta">
+                            <span class="timeline-date">2025 - PRESENT</span>
+                            <span class="timeline-inst">EST F&egrave;s // USMBA</span>
+                        </div>
+                        <h3 class="timeline-degree">
+                            <span class="lang-en">University Diploma of Technology (DUT)</span>
+                            <span class="lang-fr">Dipl&ocirc;me Universitaire de Technologie (DUT)</span>
+                        </h3>
+                        <h4 class="tech-tag">
+                            <span class="lang-en">Industrial Engineering &amp; Maintenance (GIM)</span>
+                            <span class="lang-fr">G&eacute;nie Industriel et Maintenance (GIM)</span>
+                        </h4>
+                        <p class="timeline-desc">
+                            <span class="lang-en">Enrolled at the G&eacute;nie Industriel et Maintenance (GIM) program
+                                within the G&eacute;nie M&eacute;canique Productique et Maintenance Industrielle
+                                department at the &Eacute;cole Sup&eacute;rieure de Technologie de F&egrave;s (ESTF).
+                                Focused on building polyvalent expertise to maintain, optimize, and secure industrial
+                                equipment and installations.</span>
+                            <span class="lang-fr">Inscrit &agrave; l'&Eacute;cole Sup&eacute;rieure de Technologie de
+                                F&egrave;s (ESTF) - Universit&eacute; Sidi Mohamed Ben Abdellah. Suivi d'un programme
+                                technique rigoureux au sein du d&eacute;partement G&eacute;nie M&eacute;canique
+                                Productique et Maintenance Industrielle.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Node 2: Baccalaur&eacute;at Sciences Physiques - Option Fran&ccedil;aise -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-node">
+                        <div class="timeline-meta">
+                            <span class="timeline-date">2025</span>
+                            <span class="timeline-inst">
+                                <span class="lang-en">Khemisset, Morocco</span>
+                                <span class="lang-fr">Kh&eacute;misset, Maroc</span>
+                            </span>
+                        </div>
+                        <h3 class="timeline-degree">
+                            <span class="lang-en">Baccalaureate in Physical Sciences - French Option</span>
+                            <span class="lang-fr">Baccalaur&eacute;at Sciences Physiques - Option
+                                Fran&ccedil;aise</span>
+                        </h3>
+                        <p class="timeline-desc">
+                            <span class="lang-en">Obtained with honors, establishing strong foundations in physics,
+                                chemistry, mathematics, and French language proficiency.</span>
+                            <span class="lang-fr">Obtenu avec mention, &eacute;tablissant des bases solides en physique,
+                                chimie, math&eacute;matiques et ma&icirc;trise de la langue fran&ccedil;aise.</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">
+                    <span class="lang-en">Achievements &amp; Competitions</span>
+                    <span class="lang-fr">R&eacute;alisations &amp; Comp&eacute;titions</span>
+                </h2>
+            </div>
+
+            <div class="achievements-grid">
+
+                <!-- Achievement 1: Hult Prize -->
+                <div class="achievement-card">
+                    <div class="card-glow-bar"></div>
+                    <div class="achievement-card-sweep"></div>
+                    <div class="achievement-graphic">
+                        <img src="hult_prize.png" alt="Hult Prize Morocco National Competition 2026"
+                            class="achievement-img">
+                        <div class="achievement-badge">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path
+                                    d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="achievement-body">
+                        <div class="achievement-tags">
+                            <span class="achievement-tag achievement-tag--gold">
+                                <span class="lang-en">National Competition</span>
+                                <span class="lang-fr">Comp&eacute;tition Nationale</span>
+                            </span>
+                            <span class="achievement-tag">
+                                <span class="lang-en">Entrepreneurship</span>
+                                <span class="lang-fr">Entrepreneuriat</span>
+                            </span>
+                            <span class="achievement-tag">2026</span>
+                        </div>
+                        <h3 class="achievement-title">
+                            <span class="lang-en">Hult Prize &mdash; Morocco National Competition</span>
+                            <span class="lang-fr">Hult Prize &mdash; Comp&eacute;tition Nationale Maroc</span>
+                        </h3>
+                        <p class="achievement-org">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            UM6P &mdash; Universit&eacute; Mohammed VI Polytechnique, Ben Guerir
+                        </p>
+                        <p class="achievement-desc">
+                            <span class="lang-en">Represented the team at the prestigious Hult Prize Morocco National
+                                Competition 2026 hosted at UM6P. Competed against top university teams nationwide,
+                                presenting an innovative social enterprise solution addressing a global
+                                challenge.</span>
+                            <span class="lang-fr">Repr&eacute;sent&eacute; l&apos;&eacute;quipe lors de la prestigieuse
+                                Hult Prize Morocco National Competition 2026 &agrave; l&apos;UM6P. Comp&eacute;tition
+                                contre les meilleures &eacute;quipes universitaires du pays, avec une solution
+                                d&apos;entreprise sociale innovante face &agrave; un d&eacute;fi mondial.</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-container">
+            <div class="section-header">
+
+                <h2 class="section-title">
+                    <span class="lang-en">Let's Connect</span>
+                    <span class="lang-fr">Contactez-Moi</span>
+                </h2>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <p class="contact-text">
+                        <span class="lang-en">Interested in collaborating on a technical project, inquiring about my
+                            industrial training, or discussing predictive maintenance integrations? Reach out directly
+                            using the form or the official channels below.</span>
+                        <span class="lang-fr">Int&eacute;ress&eacute; par une collaboration sur un projet technique, des
+                            questions sur mes stages industriels ou pour discuter d'int&eacute;grations de maintenance
+                            pr&eacute;dictive ? Contactez-moi directement via le formulaire ou les canaux officiels
+                            ci-dessous.</span>
+                    </p>
+
+                    <div class="contact-details">
+                        <!-- Detail 1: Email -->
+                        <div class="contact-detail-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
+                            </svg>
+                            <div class="contact-detail-text">
+                                <h5>
+                                    <span class="lang-en">Email</span>
+                                    <span class="lang-fr">Email</span>
+                                </h5>
+                                <p><a href="mailto:mohammedbouzghiba@gmail.com">mohammedbouzghiba@gmail.com</a></p>
+                            </div>
+                        </div>
+
+                        <!-- Detail 2: Phone -->
+                        <div class="contact-detail-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                            </svg>
+                            <div class="contact-detail-text">
+                                <h5>
+                                    <span class="lang-en">Phone</span>
+                                    <span class="lang-fr">T&eacute;l</span>
+                                </h5>
+                                <p><a href="tel:0611789107">06 11 78 91 07</a></p>
+                            </div>
+                        </div>
+
+                        <!-- Detail 3: City/Location -->
+                        <div class="contact-detail-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <div class="contact-detail-text">
+                                <h5>
+                                    <span class="lang-en">City</span>
+                                    <span class="lang-fr">Ville</span>
+                                </h5>
+                                <p>
+                                    <span class="lang-en">Khemisset, Morocco</span>
+                                    <span class="lang-fr">Kh&eacute;misset, Maroc</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Detail 4: LinkedIn -->
+                        <div class="contact-detail-item">
+                            <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                            <div class="contact-detail-text">
+                                <h5>
+                                    <span class="lang-en">LinkedIn</span>
+                                    <span class="lang-fr">LinkedIn</span>
+                                </h5>
+                                <p><a href="https://www.linkedin.com/in/mohammed-bouzghiba" target="_blank"
+                                        rel="noopener noreferrer">mohammed-bouzghiba</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="portfolio-contact-form" class="contact-form">
+                    <div id="form-status" class="form-status-msg"></div>
+
+                    <div class="form-group">
+                        <input type="text" id="form-name" class="form-input" placeholder=" " required>
+                        <label for="form-name" class="form-label">
+                            <span class="lang-en">System Name / Full Name</span>
+                            <span class="lang-fr">Nom Complet / Organisme</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" id="form-email" class="form-input" placeholder=" " required>
+                        <label for="form-email" class="form-label">
+                            <span class="lang-en">Return Address / Email</span>
+                            <span class="lang-fr">Adresse de Retour / Email</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" id="form-subject" class="form-input" placeholder=" " required>
+                        <label for="form-subject" class="form-label">
+                            <span class="lang-en">Telemetry Subject / Subject</span>
+                            <span class="lang-fr">Objet de la Transmission</span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="form-message" class="form-input" placeholder=" " required></textarea>
+                        <label for="form-message" class="form-label">
+                            <span class="lang-en">Transmission Log / Message</span>
+                            <span class="lang-fr">Message / Log de Transmission</span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <span class="lang-en">Send Message</span>
+                        <span class="lang-fr">Envoyer le Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <p class="footer-copyright">
+                <span class="lang-en">&copy; 2026 Mohammed Bouzghib. All Rights Reserved. Engineered using HTML5 /
+                    Vanilla CSS3 / ES6.</span>
+                <span class="lang-fr">&copy; 2026 Mohammed Bouzghib. Tous droits r&eacute;serv&eacute;s. Con&ccedil;u
+                    avec HTML5 / Vanilla CSS3 / ES6.</span>
+            </p>
+            <div class="footer-system">
+                <span class="tech-tag">LOC.SYS: ESTF_GIM // FES</span>
+                <span class="system-status">
+                    <span class="status-dot"></span>
+                    <span class="lang-en">ALL SYSTEMS NOMINAL</span>
+                    <span class="lang-fr">TOUS LES SYST&Egrave;MES SONT NOMINAUX</span>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Trailing Custom Cursor Overlay -->
+    <div class="cursor-glow-dot" id="custom-cursor-dot"></div>
+    <div class="cursor-glow-ring" id="custom-cursor-ring"></div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
