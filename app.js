@@ -4,18 +4,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
     const langBtn = document.getElementById('lang-toggle');
     const savedLang = localStorage.getItem('lang') || 'en';
-    
+
     // Set initial lang attribute
     document.documentElement.setAttribute('lang', savedLang);
-    
+
     if (langBtn) {
         langBtn.addEventListener('click', () => {
             const activeLang = document.documentElement.getAttribute('lang') || 'en';
             const newLang = activeLang === 'en' ? 'fr' : 'en';
-            
+
             document.documentElement.setAttribute('lang', newLang);
             localStorage.setItem('lang', newLang);
-            
+
             // Optional: reset typewriter indices to avoid truncation glitches during language switch
             charIndex = 0;
             isDeleting = false;
@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // TYPEWRITER EFFECT
     // ----------------------------------------------------
     const typeTarget = document.getElementById('typewriter-text');
-    const rolesEN = ["Industrial Engineering Student", "Maintenance Tech", "Python & IoT Developer", "Hult Prize Competitor 2026", "GIM @ EST Fes"];
-    const rolesFR = ["Etudiant en Genie Industriel", "Technicien de Maintenance", "Developpeur Python & IoT", "Competiteur Hult Prize 2026", "GIM @ EST Fes"];
-    
+    const rolesEN = ["Industrial Engineering Student", "Maintenance Tech", "SRM-RSK Intern", "Motatawi3 Volunteer 2026", "Python & IoT Developer", "Hult Prize Competitor 2026", "GIM @ EST Fes"];
+    const rolesFR = ["Etudiant en Genie Industriel", "Technicien de Maintenance", "Stagiaire SRM-RSK", "Benevole Motatawi3 2026", "Developpeur Python & IoT", "Competiteur Hult Prize 2026", "GIM @ EST Fes"];
+
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentLang = document.documentElement.getAttribute('lang') || 'en';
         const roles = currentLang === 'fr' ? rolesFR : rolesEN;
         const currentRole = roles[roleIndex % roles.length];
-        
+
         if (isDeleting) {
             typeTarget.textContent = currentRole.substring(0, charIndex - 1);
             charIndex--;
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const activeTheme = document.documentElement.getAttribute('data-theme');
         const newTheme = activeTheme === 'light' ? 'dark' : 'light';
-        
+
         document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // SCROLL SPY (ACTIVE NAVIGATION LINKS)
     // ----------------------------------------------------
     const sections = document.querySelectorAll('section');
-    
+
     const options = {
         root: null,
         rootMargin: '-30% 0px -60% 0px', // Trigger when section occupies the middle third of screen
@@ -177,8 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Simulate form submission
-            const infoMsg = lang === 'fr' ? 'STATUT : Envoi de la télémétrie...' : 'STATUS: Sending telemetry...';
+            // Real Form Submission to Mohammed's Inbox via FormSubmit API
+            const infoMsg = lang === 'fr' ? 'Envoi du message vers la boîte mail...' : 'Sending message to inbox...';
             showFormStatus(infoMsg, 'info');
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
@@ -187,16 +187,48 @@ document.addEventListener('DOMContentLoaded', () => {
             const btnTextFr = submitBtn.querySelector('.lang-fr');
 
             if (btnTextEn && btnTextFr) {
-                btnTextEn.textContent = 'TRANSMITTING...';
-                btnTextFr.textContent = 'TRANSMISSION...';
+                btnTextEn.textContent = 'SENDING...';
+                btnTextFr.textContent = 'ENVOI EN COURS...';
             } else {
-                submitBtn.textContent = lang === 'fr' ? 'TRANSMISSION...' : 'TRANSMITTING...';
+                submitBtn.textContent = lang === 'fr' ? 'ENVOI EN COURS...' : 'SENDING...';
             }
 
-            setTimeout(() => {
-                const successMsg = lang === 'fr' ? 'SUCCÈS : Message reçu. Transmission terminée.' : 'SUCCESS: Message received. Transmission complete.';
+            const payload = {
+                name: name,
+                email: email,
+                _subject: `[Portfolio Mohammed] ${subject} - De : ${name}`,
+                message: message,
+                _template: 'table',
+                _captcha: 'false'
+            };
+
+            fetch('https://formsubmit.co/ajax/mohammedbouzghibaa@gmail.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network error on email dispatch');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const successMsg = lang === 'fr'
+                    ? 'Message envoyé avec succès directement à Mohammed ! Merci, je vous répondrai très prochainement.'
+                    : 'Message sent successfully to Mohammed\'s inbox! Thank you, I will get back to you soon.';
                 showFormStatus(successMsg, 'success');
                 contactForm.reset();
+            })
+            .catch(error => {
+                console.warn('AJAX submit issue, submitting via standard POST fallback:', error);
+                // Fallback: If adblocker blocks AJAX, standard POST ensures delivery
+                contactForm.submit();
+            })
+            .finally(() => {
                 submitBtn.disabled = false;
                 if (btnTextEn && btnTextFr) {
                     btnTextEn.textContent = 'Send Message';
@@ -204,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     submitBtn.textContent = lang === 'fr' ? 'Envoyer le Message' : 'Send Message';
                 }
-            }, 1500);
+            });
         });
     }
 
@@ -216,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showFormStatus(msg, type) {
         formStatus.textContent = msg;
         formStatus.className = 'form-status-msg'; // reset classes
-        
+
         if (type === 'success') {
             formStatus.classList.add('success');
             formStatus.style.borderColor = 'var(--success)';
@@ -233,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formStatus.style.color = 'var(--cyan-accent)';
             formStatus.style.background = 'rgba(56, 189, 248, 0.08)';
         }
-        
+
         formStatus.style.display = 'block';
     }
 });
@@ -247,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
 
     function resize() {
-        canvas.width  = window.innerWidth;
+        canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
     }
     resize();
@@ -262,9 +294,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     const particles = Array.from({ length: PARTICLE_COUNT }, () => ({
-        x:  Math.random() * window.innerWidth,
-        y:  Math.random() * window.innerHeight,
-        r:  Math.random() * 1.6 + 0.4,
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 1.6 + 0.4,
         vx: (Math.random() - 0.5) * 0.3,
         vy: (Math.random() - 0.5) * 0.3,
         color: COLORS[Math.floor(Math.random() * COLORS.length)],
@@ -310,51 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Draw laser connections from mouse to nearest particles
-        if (mouse.x !== null && mouse.y !== null) {
-            const targets = [];
-            for (let i = 0; i < particles.length; i++) {
-                const p = particles[i];
-                const dx = p.x - mouse.x;
-                const dy = p.y - mouse.y;
-                const distSqr = dx * dx + dy * dy;
-                if (distSqr < 40000) { // 200px radius squared
-                    targets.push({ p, dist: Math.sqrt(distSqr) });
-                }
-            }
-            targets.sort((a, b) => a.dist - b.dist);
-            const nearestTargets = targets.slice(0, 5);
 
-            nearestTargets.forEach(target => {
-                const alpha = (200 - target.dist) / 200 * 0.22;
-                ctx.beginPath();
-                ctx.moveTo(mouse.x, mouse.y);
-                ctx.lineTo(target.p.x, target.p.y);
-                ctx.strokeStyle = `rgba(14, 165, 233, ${alpha})`;
-                ctx.lineWidth = 0.75;
-                ctx.stroke();
-
-                ctx.beginPath();
-                ctx.arc(target.p.x, target.p.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(249, 115, 22, ${alpha * 2})`;
-                ctx.fill();
-
-                // Laser pulse signal traveling along the tracking line (simulated glow)
-                const t = (now * 1.5 + target.p.phase) % 1.0;
-                const pulseX = mouse.x + (target.p.x - mouse.x) * t;
-                const pulseY = mouse.y + (target.p.y - mouse.y) * t;
-                
-                ctx.beginPath();
-                ctx.arc(pulseX, pulseY, 4, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(14, 165, 233, ${alpha * 1.5})`;
-                ctx.fill();
-
-                ctx.beginPath();
-                ctx.arc(pulseX, pulseY, 1.8, 0, Math.PI * 2);
-                ctx.fillStyle = '#ffffff';
-                ctx.fill();
-            });
-        }
 
         particles.forEach(p => {
             // Apply mouse gravity field
@@ -373,9 +361,9 @@ document.addEventListener('DOMContentLoaded', () => {
             p.y += p.vy;
 
             // Wrap around edges
-            if (p.x < -5)  p.x = canvas.width + 5;
-            if (p.x > canvas.width + 5)  p.x = -5;
-            if (p.y < -5)  p.y = canvas.height + 5;
+            if (p.x < -5) p.x = canvas.width + 5;
+            if (p.x > canvas.width + 5) p.x = -5;
+            if (p.y < -5) p.y = canvas.height + 5;
             if (p.y > canvas.height + 5) p.y = -5;
 
             const pulse = (Math.sin(now * p.speed * 40 + p.phase) + 1) / 2;
@@ -431,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                
+
                 // Animate progress bars if a skills-category is revealed
                 if (entry.target.classList.contains('skills-category')) {
                     const progressFills = entry.target.querySelectorAll('.skill-progress-fill');
@@ -441,7 +429,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         fill.style.width = `${level}%`;
                     });
                 }
-                
+
                 io.unobserve(entry.target);
             }
         });
@@ -455,7 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ─────────────────────────────────────────────────────────────
 (function initMouseSpotlights() {
     const cards = document.querySelectorAll(
-        '.skills-category, .project-card, .achievement-card, .timeline-node, .contact-form'
+        '.skills-category, .project-card, .achievement-card, .timeline-node, .contact-form, .hero-profile-card'
     );
 
     cards.forEach(card => {
@@ -471,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
-            
+
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
         });
@@ -483,6 +471,23 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.setProperty('--mouse-y', `-999px`);
         });
     });
+
+    // Tactile 3D tilt on Hero profile card
+    const profileCard = document.querySelector('.hero-profile-card');
+    const profileInner = document.querySelector('.profile-card-inner');
+    if (profileCard && profileInner) {
+        profileCard.addEventListener('mousemove', (e) => {
+            const rect = profileCard.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            const rotX = -(y / (rect.height / 2)) * 8;
+            const rotY = (x / (rect.width / 2)) * 8;
+            profileInner.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-6px)`;
+        });
+        profileCard.addEventListener('mouseleave', () => {
+            profileInner.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+        });
+    }
 })();
 
 // ─────────────────────────────────────────────────────────────
@@ -499,7 +504,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
-                
+
                 progressBar.style.width = `${scrolled}%`;
                 ticking = false;
             });
@@ -515,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnScan = document.getElementById('btn-terminal-scan');
     const btnClear = document.getElementById('btn-terminal-clear');
     const logOutput = document.getElementById('terminal-log-output');
-    
+
     if (!btnScan || !logOutput) return;
 
     let isScanning = false;
@@ -554,10 +559,10 @@ document.addEventListener('DOMContentLoaded', () => {
         isScanning = true;
         btnScan.disabled = true;
         btnScan.style.opacity = '0.5';
-        
+
         // Clear previous lines
         logOutput.innerHTML = '';
-        
+
         const currentLang = document.documentElement.getAttribute('lang') || 'en';
         const steps = currentLang === 'fr' ? scanStepsFR : scanStepsEN;
 
@@ -567,13 +572,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 line.className = `terminal-line log-${step.type}`;
                 line.textContent = step.text;
                 logOutput.appendChild(line);
-                
+
                 // Auto-scroll to bottom of terminal body
                 const terminalBody = logOutput.closest('.terminal-body');
                 if (terminalBody) {
                     terminalBody.scrollTop = terminalBody.scrollHeight;
                 }
-                
+
                 if (step === steps[steps.length - 1]) {
                     isScanning = false;
                     btnScan.disabled = false;
@@ -588,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Cancel all running timeouts
         scanTimeoutIds.forEach(id => clearTimeout(id));
         scanTimeoutIds = [];
-        
+
         logOutput.innerHTML = '';
         isScanning = false;
         btnScan.disabled = false;
@@ -615,19 +620,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const temp = (23.8 + Math.random() * 1.0).toFixed(1);
             tempVal.textContent = `${temp}°C`;
         }
-        
+
         // Latency fluctuates between 35ms and 55ms
         if (latencyVal) {
             const latency = Math.floor(35 + Math.random() * 20);
             latencyVal.textContent = `${latency}ms`;
         }
-        
+
         // IoT load fluctuates between 12.0% and 18.0%
         if (loadVal) {
             const load = (12.0 + Math.random() * 6.0).toFixed(1);
             loadVal.textContent = `${load}%`;
         }
-        
+
         // Modbus packets increment by 1 to 5 packets
         if (pktsVal) {
             pktsCount += Math.floor(1 + Math.random() * 5);
@@ -643,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dot = document.getElementById('custom-cursor-dot');
     const ring = document.getElementById('custom-cursor-ring');
     const ambientGlow = document.querySelector('.ambient-glow');
-    
+
     if (!dot || !ring) return;
 
     let mouseX = 0, mouseY = 0;
@@ -657,7 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        
+
         if (!isMoving) {
             dot.style.opacity = '1';
             ring.style.opacity = '1';
@@ -779,7 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const trace = document.getElementById('oscilloscope-trace');
     const freqVal = document.getElementById('scope-freq');
     const ampVal = document.getElementById('scope-amp');
-    
+
     if (!trace) return;
 
     let time = 0;
@@ -806,13 +811,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         for (let i = 0; i <= points; i++) {
             const x = i * dx;
-            
+
             // Calculate a wave composed of a fundamental sine wave, a 2nd harmonic, and some noise
             const phase = time * 0.25;
             const term1 = Math.sin((i / points) * Math.PI * 6 - phase); // Fundamental
             const term2 = 0.25 * Math.sin((i / points) * Math.PI * 18 + phase * 2); // Harmonic
             const noise = 0.08 * (Math.sin(x * 1.5 + time * 3) * Math.cos(x * 0.7 - time)); // High frequency noise
-            
+
             // Apply scale by amplitude and center on viewport
             const ampScale = baseAmp * 25; // max vertical displacement
             const y = centerY + (term1 + term2 + noise) * ampScale;
